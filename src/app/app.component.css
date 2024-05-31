@@ -89,14 +89,17 @@ input[type=text], select {
   .btn-delete{
     background-color: #FB5027;
     color: white;
+    cursor: pointer;
   }
 
-  .btn-fetch{
+  .btn-fetch, .btn-edit{
     background-color: #3498DB;
     color: white;
+    cursor: pointer;
   }
 
   .btn-clear{
     background-color: #F5B041;
     color: white;
+    cursor: pointer;
   }

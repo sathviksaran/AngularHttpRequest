@@ -18,7 +18,7 @@
           <label>Product Price</label>
           <input type="text" name="price" ngModel>
 
-          <input type="submit" value="Add Product">
+          <input type="submit" value="{{ editMode ? 'Update Product' : 'Add Product' }}">
         </form>
       </div>
 
@@ -36,7 +36,10 @@
           <tr *ngIf="allProducts.length < 1 && !isFetching">
             <td colspan="5">No Products Available!</td>
           </tr>
-          <tr *ngIf="isFetching">
+          <tr *ngIf="errorMessage">
+            <td colspan="5">{{ errorMessage }}</td>
+          </tr>
+          <tr *ngIf="isFetching && !errorMessage">
             <td colspan="5">Loading....</td>
           </tr>
           <tr *ngFor="let prod of allProducts; index as i">
@@ -45,6 +48,7 @@
             <td>{{ prod.desc }}</td>
             <td>${{ prod.price }}</td>
             <td><button class="btn-delete" (click)="onDeleteProduct(prod.id)">Delete</button></td>
+            <td><button class="btn-edit" (click)="onEditClicked(prod.id)">Edit</button></td>
           </tr>
         </table>
         <!-- <input type="submit" value="Fetch Product" (click)="onProductsFetch()"> -->
